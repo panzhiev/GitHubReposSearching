@@ -1,20 +1,36 @@
 package com.example.tim.githubrepossearching.presenter
 
+import com.example.tim.githubrepossearching.model.IModel
+import com.example.tim.githubrepossearching.model.Model
+import com.example.tim.githubrepossearching.view.MainActivity
+import rx.Observable
+import rx.Subscription
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
+
 /**
  * Created by TIM on 08.08.2017.
  */
-class MainPresenter : IPresenter {
+class MainPresenter(var activity: MainActivity) : IPresenter {
+
+    private var subscription: Subscription? = null
+    private var model: IModel = Model()
 
     override fun getData() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        subscription = model.getCustomReposList("hi")
+                .flatMap { list -> Observable.from(list) }
+                .map { obj -> obj.name }
+                .toList()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
+
+//                { s -> activity.setData(s as ArrayList<String>) },
+//        { e -> activity.showException(e) }
     }
 
     override fun onUnsubscribe() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (subscription != null && !subscription!!.isUnsubscribed)
+            subscription!!.unsubscribe()
     }
-
-//    override fun onUnsubscribe() {RecyclerViewAdapter
-//        if (subscription != null && !subscription!!.isUnsubscribed)
-//            subscription!!.unsubscribe()
-//    }
 }
