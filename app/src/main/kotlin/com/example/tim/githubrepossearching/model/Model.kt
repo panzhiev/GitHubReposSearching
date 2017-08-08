@@ -1,7 +1,7 @@
 package com.example.tim.githubrepossearching.model
 
 import com.example.tim.githubrepossearching.model.api.ApiModule
-import com.example.tim.githubrepossearching.model.data.CustomRepo
+import com.example.tim.githubrepossearching.model.data.ListOfRepos
 import rx.Observable
 
 
@@ -10,7 +10,7 @@ import rx.Observable
  */
 class Model : IModel {
 
-    override fun getCustomReposList(searchQuery: String): Observable<List<CustomRepo>> {
+    override fun getCustomReposList(searchQuery: String): Observable<ListOfRepos> {
         return ApiModule().getApiInterface().getRepos("$searchQuery in:name", 1, 100)
     }
 }

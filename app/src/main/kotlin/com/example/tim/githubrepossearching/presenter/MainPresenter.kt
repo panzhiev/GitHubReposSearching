@@ -2,6 +2,7 @@ package com.example.tim.githubrepossearching.presenter
 
 import com.example.tim.githubrepossearching.model.IModel
 import com.example.tim.githubrepossearching.model.Model
+import com.example.tim.githubrepossearching.model.data.CustomRepo
 import com.example.tim.githubrepossearching.view.MainActivity
 import rx.Observable
 import rx.Subscription
@@ -18,15 +19,14 @@ class MainPresenter(var activity: MainActivity) : IPresenter {
 
     override fun getData() {
         subscription = model.getCustomReposList("jquery")
+                .map { listOfRepos -> listOfRepos.items }
                 .flatMap { list -> Observable.from(list) }
-                .map { obj -> obj.name }
+                .map { list -> CustomRepo(list.id, list.name, list.htmlUrl)}
                 .toList()
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe()
-
-//                { s -> activity.setData(s as ArrayList<String>) },
-//        { e -> activity.showException(e) }
+                .subscribe({ listCustomRepo -> activity.setData(listCustomRepo as ArrayList<CustomRepo>) },
+                        { e -> activity.showException(e) })
     }
 
     override fun onUnsubscribe() {

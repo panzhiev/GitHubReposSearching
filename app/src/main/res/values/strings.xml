@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GitHubReposSearching</string>
+    <string name="et_search">Search…</string>
+    <string name="btn_search">Search / Stop</string>
 </resources>
