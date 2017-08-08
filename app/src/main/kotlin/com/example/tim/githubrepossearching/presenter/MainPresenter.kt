@@ -16,9 +16,8 @@ class MainPresenter(var activity: MainActivity) : IPresenter {
     private var subscription: Subscription? = null
     private var model: IModel = Model()
 
-
     override fun getData() {
-        subscription = model.getCustomReposList("hi")
+        subscription = model.getCustomReposList("jquery")
                 .flatMap { list -> Observable.from(list) }
                 .map { obj -> obj.name }
                 .toList()
