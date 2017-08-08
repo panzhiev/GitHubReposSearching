@@ -3,7 +3,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-
 android {
     compileSdkVersion 25
     buildToolsVersion "26.0.0"
@@ -65,4 +64,8 @@ dependencies {
 
     compile 'android.arch.persistence.room:runtime:1.0.0-alpha3'
     kapt 'android.arch.persistence.room:compiler:1.0.0-alpha3'
+}
+
+repositories {
+    mavenCentral()
 }
