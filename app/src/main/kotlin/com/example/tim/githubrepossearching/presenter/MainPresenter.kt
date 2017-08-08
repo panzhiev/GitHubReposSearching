@@ -16,6 +16,7 @@ class MainPresenter(var activity: MainActivity) : IPresenter {
     private var subscription: Subscription? = null
     private var model: IModel = Model()
 
+
     override fun getData() {
         subscription = model.getCustomReposList("hi")
                 .flatMap { list -> Observable.from(list) }
