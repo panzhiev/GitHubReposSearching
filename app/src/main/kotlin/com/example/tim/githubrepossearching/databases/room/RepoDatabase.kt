@@ -1,4 +1,4 @@
-package id.kotlin.sample.room.data
+package com.example.tim.githubrepossearching.databases.room
 
 import android.arch.persistence.room.Database
 import android.arch.persistence.room.RoomDatabase

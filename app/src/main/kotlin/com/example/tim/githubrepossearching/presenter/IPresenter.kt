@@ -1,6 +1,6 @@
 package com.example.tim.githubrepossearching.presenter
 
-import id.kotlin.sample.room.data.Repo
+import com.example.tim.githubrepossearching.databases.room.Repo
 
 /**
  * Created by TIM on 08.08.2017.

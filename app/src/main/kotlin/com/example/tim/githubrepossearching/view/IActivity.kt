@@ -1,6 +1,6 @@
 package com.tim.kotlinjakewharton.view.activities
 
-import id.kotlin.sample.room.data.Repo
+import com.example.tim.githubrepossearching.databases.room.Repo
 
 /**
  * Created by TIM on 22.07.2017.

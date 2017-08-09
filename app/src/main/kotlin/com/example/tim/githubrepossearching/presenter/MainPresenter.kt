@@ -6,7 +6,7 @@ import com.example.tim.githubrepossearching.model.IModel
 import com.example.tim.githubrepossearching.model.Model
 import com.example.tim.githubrepossearching.tools.isStoped
 import com.example.tim.githubrepossearching.view.MainActivity
-import id.kotlin.sample.room.data.Repo
+import com.example.tim.githubrepossearching.databases.room.Repo
 import kotlinx.android.synthetic.main.activity_main.*
 import rx.Observable
 import rx.Single

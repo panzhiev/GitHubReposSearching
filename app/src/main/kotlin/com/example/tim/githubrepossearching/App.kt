@@ -2,12 +2,12 @@ package com.example.tim.githubrepossearching
 
 import android.app.Application
 import android.arch.persistence.room.Room
-import id.kotlin.sample.room.data.RepoDatabase
+import com.example.tim.githubrepossearching.databases.room.RepoDatabase
 
 /**
- * Created by lekar on 08.08.17.
+ * Created by TIM on 08.08.17.
  */
-class App: Application() {
+class App : Application() {
 
     companion object {
         var database: RepoDatabase? = null
@@ -15,6 +15,6 @@ class App: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        App.database = Room.databaseBuilder(applicationContext, RepoDatabase::class.java, "repo-db").build()
+        database = Room.databaseBuilder(applicationContext, RepoDatabase::class.java, "repo-db").build()
     }
 }

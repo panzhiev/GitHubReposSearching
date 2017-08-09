@@ -10,7 +10,7 @@ import com.example.tim.githubrepossearching.presenter.IPresenter
 import com.example.tim.githubrepossearching.presenter.MainPresenter
 import com.example.tim.githubrepossearching.view.adapters.RecyclerViewAdapter
 import com.tim.kotlinjakewharton.view.activities.IActivity
-import id.kotlin.sample.room.data.Repo
+import com.example.tim.githubrepossearching.databases.room.Repo
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), IActivity {

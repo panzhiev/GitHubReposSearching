@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.tim.githubrepossearching.R
-import id.kotlin.sample.room.data.Repo
+import com.example.tim.githubrepossearching.databases.room.Repo
 import kotlinx.android.synthetic.main.item_repository.view.*
 
 /**
