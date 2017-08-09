@@ -10,7 +10,7 @@ import android.content.SharedPreferences
 
 class SharedPrefsHelper {
 
-    val PREFS_NAME = "com.example.panzhiev.a111minutessimplefilemanager"
+    val PREFS_NAME = "com.example.tim.githubrepossearching.databases"
     var prefs: SharedPreferences? = null
 
     fun putStringValue(context: Context, key: String, value: String) {
