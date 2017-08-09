@@ -8,4 +8,6 @@ import com.example.tim.githubrepossearching.model.data.CustomRepo
 interface IActivity {
     fun setData(list: ArrayList<CustomRepo>)
     fun showException(e: Throwable)
+    fun showProgress()
+    fun hideProgress()
 }
