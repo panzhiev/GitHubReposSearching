@@ -10,7 +10,7 @@ import rx.Observable
  */
 class Model : IModel {
 
-    override fun getCustomReposList(searchQuery: String): Observable<ListOfRepos> {
+    override fun getReposList(searchQuery: String): Observable<ListOfRepos> {
         return ApiModule().getApiInterface().getRepos("$searchQuery in:name", 1, 100)
     }
 }

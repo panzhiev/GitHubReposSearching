@@ -6,13 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.tim.githubrepossearching.R
-import com.example.tim.githubrepossearching.model.data.CustomRepo
+import id.kotlin.sample.room.data.Repo
 import kotlinx.android.synthetic.main.item_repository.view.*
 
 /**
  * Created by TIM on 08.08.2017.
  */
-class RecyclerViewAdapter(var context: Context, var list: ArrayList<CustomRepo>)
+class RecyclerViewAdapter(var context: Context, var list: ArrayList<Repo>)
     : RecyclerView.Adapter<RecyclerViewAdapter.MyHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
@@ -20,8 +20,8 @@ class RecyclerViewAdapter(var context: Context, var list: ArrayList<CustomRepo>)
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        val customRepo: CustomRepo = list[position]
-        holder.bindData(customRepo.name, customRepo.id.toString(), customRepo.htmlUrl)
+        val repo: Repo = list[position]
+        holder.bindData(repo.name, repo.id.toString(), repo.htmlUrl)
     }
 
     override fun getItemCount(): Int {

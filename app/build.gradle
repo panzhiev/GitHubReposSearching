@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
+//apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 25
@@ -21,7 +21,7 @@ android {
         }
     }
 
-    sourceSets{
+    sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
         androidTest.java.srcDirs += 'src/androidTest/kotlin'
     }
@@ -62,10 +62,8 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
     compile 'com.android.support:cardview-v7:25.3.1'
 
-    compile "android.arch.persistence.room:runtime:1.0.0-alpha5"
-    annotationProcessor "android.arch.persistence.room:compiler:1.0.0-alpha5"
-}
-
-repositories {
-    mavenCentral()
+    // Room
+    compile "android.arch.persistence.room:runtime:${rootProject.archRoomVersion}"
+//    annotationProcessor "android.arch.persistence.room:compiler:${rootProject.archRoomVersion}"
+    kapt "android.arch.persistence.room:compiler:${rootProject.archRoomVersion}"
 }

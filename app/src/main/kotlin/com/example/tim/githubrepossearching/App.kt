@@ -15,6 +15,6 @@ class App: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        App.database =  Room.databaseBuilder(this, RepoDatabase::class.java, "we-need-db").build()
+        App.database = Room.databaseBuilder(applicationContext, RepoDatabase::class.java, "repo-db").build()
     }
 }

@@ -7,6 +7,7 @@ data class RepoModel(val id: Long,
                      val name: String,
                      val url: String) : Parcelable {
 
+
     companion object {
         @JvmField val CREATOR: Parcelable.Creator<RepoModel> = object : Parcelable.Creator<RepoModel> {
             override fun createFromParcel(source: Parcel): RepoModel = RepoModel(source)
