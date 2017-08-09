@@ -16,10 +16,16 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), IActivity {
 
     private val mainPresenter: IPresenter = MainPresenter(this)
+    private var listRepos: ArrayList<CustomRepo> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        if(getLastCustomNonConfigurationInstance() != null) {
+            listRepos = getLastCustomNonConfigurationInstance() as ArrayList<CustomRepo>
+            setData(listRepos)
+        }
 
         btn_search.setOnClickListener {
             if (et_search.text.toString() != "") mainPresenter.getData()
@@ -28,8 +34,9 @@ class MainActivity : AppCompatActivity(), IActivity {
     }
 
     override fun setData(list: ArrayList<CustomRepo>) {
+        listRepos = list
         rv_repos.hasFixedSize()
-        rv_repos.adapter = RecyclerViewAdapter(this, list)
+        rv_repos.adapter = RecyclerViewAdapter(this, listRepos)
         hideProgress()
     }
 
@@ -44,6 +51,10 @@ class MainActivity : AppCompatActivity(), IActivity {
 
     override fun hideProgress() {
         progress_bar.visibility = View.GONE
+    }
+
+    override fun onRetainCustomNonConfigurationInstance(): Any {
+        return listRepos
     }
 
     override fun onStop() {

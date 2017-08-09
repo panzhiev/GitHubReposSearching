@@ -12,22 +12,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/et_search"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="8dp"
             android:layout_marginEnd="10dp"
             android:layout_weight="1"
+            android:fontFamily="sans-serif-light"
+            android:background="@drawable/edit_text_background"
             android:hint="@string/et_search"/>
 
         <Button
             android:id="@+id/btn_search"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="@string/btn_search"/>
+            android:background="@drawable/ripple_primary"
+            android:text="@string/btn_search"
+            android:textColor="@android:color/white"/>
     </LinearLayout>
 
     <FrameLayout
@@ -47,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
             android:visibility="invisible"/>
     </FrameLayout>
 </LinearLayout>
