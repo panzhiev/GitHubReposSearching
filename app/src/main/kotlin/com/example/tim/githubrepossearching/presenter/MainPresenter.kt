@@ -5,6 +5,7 @@ import com.example.tim.githubrepossearching.model.Model
 import com.example.tim.githubrepossearching.model.data.CustomRepo
 import com.example.tim.githubrepossearching.tools.isStoped
 import com.example.tim.githubrepossearching.view.MainActivity
+import kotlinx.android.synthetic.main.activity_main.*
 import rx.Observable
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
@@ -18,12 +19,12 @@ class MainPresenter(var activity: MainActivity) : IPresenter {
     private var subscription: Subscription? = null
     private var model: IModel = Model()
 
-    override fun getData(query: String) {
+    override fun getData() {
 
         if (isStoped) {
             isStoped = !isStoped
             activity.showProgress()
-            subscription = model.getCustomReposList(query)
+            subscription = model.getCustomReposList(activity.et_search.text.toString())
                     .map { listOfRepos -> listOfRepos.items }
                     .flatMap { list -> Observable.from(list) }
                     .map { list -> CustomRepo(list.id, list.name, list.htmlUrl) }

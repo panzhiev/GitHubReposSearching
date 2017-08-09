@@ -22,7 +22,8 @@ class MainActivity : AppCompatActivity(), IActivity {
         setContentView(R.layout.activity_main)
 
         btn_search.setOnClickListener {
-            mainPresenter.getData(et_search.text.toString())
+            if (et_search.text.toString() != "") mainPresenter.getData()
+            else Toast.makeText(this, "Enter the search text, please", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity(), IActivity {
 
     override fun showException(e: Throwable) {
         Toast.makeText(this, e.toString(), Toast.LENGTH_LONG).show()
-        Log.d("exception", e.toString())
+        Log.d("showException", e.toString())
     }
 
     override fun showProgress() {
