@@ -28,6 +28,7 @@ class MainPresenter(var activity: MainActivity) : IPresenter {
         if (isStoped) {
             isStoped = !isStoped
             activity.showProgress()
+
             searchQuery = activity.et_search.text.toString()
 
             if (searchQuery == SharedPrefsHelper().getStringValue(activity, "lastSearching")) {
@@ -44,6 +45,7 @@ class MainPresenter(var activity: MainActivity) : IPresenter {
                                 { listRepo ->
                                     activity.setData(listRepo as ArrayList<Repo>)
                                     isStoped = true
+                                    deleteRepos()
                                     for (item in listRepo)
                                         addRepo(item)
                                 },
@@ -70,9 +72,17 @@ class MainPresenter(var activity: MainActivity) : IPresenter {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({ listRepo ->
-                            activity.setData(listRepo as ArrayList<Repo>)
-                            isStoped = true },
+                    activity.setData(listRepo as ArrayList<Repo>)
+                    isStoped = true
+                },
                         { e -> activity.showException(e) })
+    }
+
+    override fun deleteRepos() {
+        Single.fromCallable { App.database?.repoDao()?.deleteAll() }
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe()
     }
 
     override fun onUnsubscribe() {

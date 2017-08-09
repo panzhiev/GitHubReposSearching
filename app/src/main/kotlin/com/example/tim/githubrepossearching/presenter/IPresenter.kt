@@ -10,4 +10,5 @@ interface IPresenter {
     fun onUnsubscribe()
     fun addRepo(repo: Repo)
     fun getRepos()
+    fun deleteRepos()
 }

@@ -13,6 +13,9 @@ interface RepoDao {
     @Insert()
     fun insert(repo: Repo)
 
+    @Query("DELETE FROM repo")
+    fun deleteAll()
+
 //    @Delete
 //    fun deleteUser()
 }
